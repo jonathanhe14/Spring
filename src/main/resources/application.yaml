@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: sysman
+    password: Holamundo123
+    url: jdbc:sqlserver://bd-cmserver.database.windows.net:1433;database=BD-Componentes;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+  jpa:
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
