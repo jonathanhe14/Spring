@@ -37,6 +37,11 @@ public class ProyectoCmApplication {
 		return "Registro";
 	};
 
+	@GetMapping("/")
+	public String inicio(){
+		return "index";
+	};
+
 	@GetMapping("/index")
 	public String index(){
 		return "index";
@@ -62,6 +67,7 @@ public class ProyectoCmApplication {
 		return new ResponseEntity<>(users, HttpStatus.OK);
 
 	}
+
 
 	@RequestMapping("/lista")
 	@ResponseBody
