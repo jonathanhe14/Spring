@@ -6,7 +6,7 @@ $(document).ready(function (){
 
 async function cargarUsuarios() {
 
-    const rawResponse = await fetch('/usuariosGet', {
+    const rawResponse = await fetch('/usuarios', {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -18,11 +18,23 @@ async function cargarUsuarios() {
     console.log(usuarios[0].edad);
     let listadoHTML ='';
     for(let usuario of usuarios){
-        let usuario ='<tr><td>'+usuarios[c].id+'</td><td>'+usuarios[c].usuario+'</td><td>'+usuarios[c].nombre+'</td><td>'+usuarios[c].apellido+'</td><td>'+usuarios[c].edad+'</td><td>'+usuarios[c].peso+'</td></tr>';
+        let usuario ='<tr><td>'+usuarios[c].id+'</td><td>'+usuarios[c].usuario+'</td><td>'+usuarios[c].nombre+'</td><td>'+usuarios[c].apellido+'</td><td>'+usuarios[c].edad+'</td><td>'+usuarios[c].edad+'</td></tr>';
         listadoHTML +=usuario;
         c = c+1;
     }
 
 
     document.querySelector('#ListaUsuariosTabla tbody').outerHTML = listadoHTML;
+}
+
+async function eliminarUsuario() {
+
+    const rawResponse = await fetch('/usuarios'+id, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    });
+
 }

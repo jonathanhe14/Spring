@@ -2,25 +2,30 @@ package com.example.proyectoCM;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="Usuario")
 public class Usuario {
 
+
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    @Column(name ="usuario")
+    @Column(name ="usuario",nullable = false,unique = true)
     private String usuario;
     @Column(name ="nombre")
     private String nombre;
     @Column(name ="apellido")
     private String apellido;
-    @Column(name ="correo")
+    @Column(name ="correo",nullable = false,unique = true)
     private String correo;
     @Column(name ="contrasenna")
     private String contrasenna;
     @Column(name ="edad")
     private int edad;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Tarea> tareas;
 
     public Usuario(String correo, String contrasenna, String usuario, String nombre,String apellido,int edad) {
         this.usuario = usuario;
@@ -34,14 +39,6 @@ public class Usuario {
 
     public Usuario() {
 
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getUsuario() {
@@ -91,6 +88,14 @@ public class Usuario {
 
     public void setContrasenna(String contrasenna) {
         this.contrasenna = contrasenna;
+    }
+
+    public List<Tarea> getTareas() {
+        return tareas;
+    }
+
+    public void setTareas(List<Tarea> tareas) {
+        this.tareas = tareas;
     }
 
     @Override

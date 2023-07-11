@@ -34,46 +34,21 @@ public class ProyectoCmApplication {
 	//}
 	@GetMapping("/Registro")
 	public String registro(){
-		return "Registro";
+		return "registro2";
 	};
-
-	@GetMapping("/")
-	public String inicio(){
+	@GetMapping("/IniciarSesion")
+	public String iniciarSesion(){
 		return "index";
 	};
-
-	@GetMapping("/index")
-	public String index(){
-		return "index";
-	};
-
-
-	@PostMapping("/Registro")
-	public String registroUsuario(@ModelAttribute("correo") String correo,@ModelAttribute("contrasenna") String contrasenna,
-								  @ModelAttribute("usuario") String usuario,@ModelAttribute("nombre") String nombre,
-								  @ModelAttribute("apellido") String apellido,@ModelAttribute("edad") int edad){
-
-		Usuario usuario1 = new Usuario(correo,contrasenna,usuario,nombre,apellido,edad);
-		System.out.println(usuario1.toString());
-		repository.save(usuario1);
-		return "Bienvenida";
-	}
-
-	@GetMapping("/usuariosGet")
-	public ResponseEntity<List<Usuario>> getAllUsers() {
-
-		List<Usuario> users = new ArrayList<Usuario>();
-		repository.findAll().forEach(users::add);
-		return new ResponseEntity<>(users, HttpStatus.OK);
-
-	}
-
-
-	@RequestMapping("/lista")
-	@ResponseBody
-	public String abrirLista(){
+	@GetMapping("/usuariosLista")
+	public String lista(){
 		return "listaUsuarios";
-	}
+	};
+	@GetMapping("/home")
+	public String home(){
+		return "Perfil";
+	};
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoCmApplication.class, args);
